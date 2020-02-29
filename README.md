@@ -46,7 +46,11 @@ I am not making any validation that the value you enter is JSON or not, because 
 It will delete the key value pair from the file
 
 ## FLUSH operation
-Every now and then we have to call the flush method, which will put the details into file, i have restrained from doing every read/write operation from the file due to memory issue(its time inefficient) so only when you call flush method , data will get persisted into the memory, and in the next get call data will be read from the file again
+Every now and then we have to call the flush method, which will put the details into file, i have restrained from doing every read/write operation from the file due to memory issue(its time inefficient) so only when you call flush method , data will get persisted into the memory, and in the next get call data will be read from the file again.
+
+Please call flush only when your reading/deleting/get is completed
+Flush persist the details into the file, next read will try to read the whole file again,
+so if you call flush again and again , program will behave slower
 
 ```bash  
 map.flush()
