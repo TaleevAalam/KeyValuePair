@@ -59,7 +59,7 @@ public class SimpleInputTest {
 	@Test(expected = CustomException.class)
 	public void ValueSizeTest() throws CustomException, IOException {
 		String fileName = "fileForInvalidValueTest.txt";
-		M.put("nameS", new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "\\" + fileName))),
+		M.put("nameS", new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "\\..\\" + fileName))),
 				"5s");
 		M.flush();
 	}
@@ -96,7 +96,7 @@ public class SimpleInputTest {
 		for (int i = 1; i < 1000000000; i++) {
 			try {
 				M.put("nameM" + i,
-						new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "\\" + fileName))),
+						new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "\\..\\" + fileName))),
 						"5s");
 			} catch (CustomException e) {
 				M.flush();
