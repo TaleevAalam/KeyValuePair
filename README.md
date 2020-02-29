@@ -19,7 +19,11 @@ I am not making any validation that the value you enter is JSON or not, because 
 ## Starting the file mapper 
 
 ```bash
- MHashMap map = FileMapper.getMap();
+ try{
+   MHashMap map = FileMapper.getMap();
+ }catch(CustomException exception){
+  System.out.println(exception.getMessage())
+ }
 ```
 
 ```bash
@@ -57,28 +61,30 @@ map.flush()
 ```
 If doing multiple thread operation, please call flush once you are done with all your thread operation
 this is the only limitation of the program
-Here is the list of requirement from Problem statement and their status
 
-## I have created a jar named FileMapper.jar, if you want to import to use this program as external library
 
-## It can be initialized using an optional file path. If one is not provided, it will reliably create itself in a reasonable location on the laptop -- Working
+## Here is the list of requirement from Problem statement and their status
 
-## A new key-value pair can be added to the data store using the Create operation. The key is always a string - capped at 32chars. The value is always a JSON object - capped at 16KB. ----Working
+#### I have created a jar named FileMapper.jar, if you want to import to use this program as external library
 
-## If Create is invoked for an existing key, an appropriate error must be returned -- Working
+#### It can be initialized using an optional file path. If one is not provided, it will reliably create itself in a reasonable location on the laptop -- Working
 
-## A Read operation on a key can be performed by providing the key, and receiving the value in response, as a JSON object --- Working
+#### A new key-value pair can be added to the data store using the Create operation. The key is always a string - capped at 32chars. The value is always a JSON object - capped at 16KB. ----Working
 
-## A Delete operation can be performed by providing the key -- Done
+#### If Create is invoked for an existing key, an appropriate error must be returned -- Working
 
-## Time-To-Live property -- Done
+#### A Read operation on a key can be performed by providing the key, and receiving the value in response, as a JSON object --- Working
 
-## Appropriate error responses must always be returned to a client if it uses the data store in unexpected ways or breaches any limits -- Done, but not througly tested
+#### A Delete operation can be performed by providing the key -- Done
 
-## The size of the file storing data must never exceed 1GB -- Done
+#### Time-To-Live property -- Done
 
-## More than one client process cannot be allowed to use the same file as a data store at any given time -- Done
+#### Appropriate error responses must always be returned to a client if it uses the data store in unexpected ways or breaches any limits -- Done, but not througly tested
 
-## A client process is allowed to access the data store using multiple threads, if it desires to. The data store must therefore be thread-safe -- Done
+#### The size of the file storing data must never exceed 1GB -- Done
 
-## The client will bear as little memory costs as possible to use this data store, while deriving maximum performance with respect to response times for accessing the data store -- I have tried to make it efficient
+#### More than one client process cannot be allowed to use the same file as a data store at any given time -- Done
+
+#### A client process is allowed to access the data store using multiple threads, if it desires to. The data store must therefore be thread-safe -- Done
+
+#### The client will bear as little memory costs as possible to use this data store, while deriving maximum performance with respect to response times for accessing the data store -- I have tried to make it efficient
