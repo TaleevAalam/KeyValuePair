@@ -148,14 +148,20 @@ public class FileMapper {
 		}
 
 		public synchronized void flush() {
-			try {
-				ObjectOutputStream Ob = new ObjectOutputStream(new FileOutputStream(new File(fileLocation)));
-				Ob.writeObject(hM);
-				Ob.close();
+			
+			Thread flashThread = new Thread(()->{
+				ObjectOutputStream Ob;
+				try {
+					Ob = new ObjectOutputStream(new FileOutputStream(new File(fileLocation)));
+					Ob.writeObject(hM);
+					Ob.close();
+
+				} catch (IOException e) {
+				}
 				updated = true;
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			});
+			flashThread.setPriority(Thread.MIN_PRIORITY);
+			flashThread.start();
 		}
 
 		static class ValueObject implements Serializable {
