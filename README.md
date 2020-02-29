@@ -22,7 +22,7 @@ I am not making any validation that the value you enter is JSON or not, because 
  try{
    MHashMap map = FileMapper.getMap();
  }catch(CustomException exception){
-  System.out.println(exception.getMessage())
+  System.out.println(exception.getMessage());
  }
 ```
 
