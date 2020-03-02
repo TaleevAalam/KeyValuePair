@@ -35,7 +35,10 @@ I am not making any validation that the value you enter is JSON or not, because 
  
 ## Putting into file mapper
 ```bash
- map.put(key,JSONValue)
+ map.put(key,JSONValue, timeToLive)
+ key - String
+ JSONValue - String
+ timeToLive - e.g. 5s, 5m, 5h
 ```
 ## Get from the file
 ```bash
